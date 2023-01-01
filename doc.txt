@@ -1,0 +1,11 @@
+===Step by step install aplikasi haydey moment===
+- Unduh file .zip release stable lalu simpan di folder mana saja, contohnya  simpan di folder Documents (Note: file yang lama dihapus saja)
+- Buka file di text edito visual studio code dsb.
+- Ubah konfigurasi database pada file .env lalu di sesuaikan dengan nama database, username dan password
+- jalankan migrations di terminal (bisa menggunakan CMD atau terminal di VSCode) lalu ketikan perintah : php artisan migrate
+- Jalankan aplikasi dengan perintah : php artisan serve lalu buka browser ketik localhost:8000
+- klik menu login lalu create user baru
+- login dengan email & password yang telah dibuat
+- jangan lupa untuk selalu menambahkan package, items dan payment untuk memulai simulasi orders
+
+===Terima Kasih===
