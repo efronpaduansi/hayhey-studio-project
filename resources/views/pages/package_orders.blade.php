@@ -14,6 +14,10 @@
                     <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" autofocus required>
                 </div>
                 <div class="form-group">
+                    <label for="paket_tambahan">Couple Name <small class="text-danger">*</small></label>
+                    <input type="text" class="form-control" id="paket_tambahan" name="paket_tambahan" required>
+                </div>
+                <div class="form-group">
                     <label for="package">Package</label>
                     <input type="text" class="form-control" id="package" name="package" value="{{ $items->packages->package_name }}" readonly>
                 </div>
@@ -24,10 +28,6 @@
                 <div class="form-group">
                     <label for="ket_paket">Deskripsi Paket</label>
                     <textarea name="ket_paket" id="ket_paket" cols="30" rows="3" class="form-control" readonly>{{ $items->ket_paket }}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="paket_tambahan">Paket Tambahan</label>
-                    <input type="text" class="form-control" id="paket_tambahan" name="paket_tambahan">
                 </div>
                 <div class="form-group">
                     <label for="tgl_pelaksanaan">Tanggal Pelaksanaan <small class="text-danger">*</small></label>

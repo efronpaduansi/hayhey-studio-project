@@ -26,6 +26,19 @@ class AdminController extends Controller
         
     }
 
+    public function orders_delete($id)
+    {
+        $orders = Orders::find($id);
+        $orders->delete();
+        return redirect('/admin/orders')->with('pesan', 'Berhasil menghapus data!');
+    }
+    public function orders_print($id){
+
+        $orders = Orders::find($id);
+
+        return view('admin.orders_print', compact('orders'));
+    }
+
     public function payments()
     {
         $judul = 'Payments';
@@ -74,6 +87,14 @@ class AdminController extends Controller
         $packages->slug             = Str::slug($request->package_name);
         $packages->description        = $request->description;
         $packages->starting_price   = $request->starting_price;
+
+        // Upload Gambar
+        $this->validate($request, [
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = time().'.'.$request->gambar->extension();  
+        $request->gambar->move(public_path('uploads'), $imageName);
+        $packages->gambar = $imageName;
         $packages->save();
         return redirect('/admin/package')->with('pesan', 'Berhasil menambahkan data!');
     }
@@ -132,13 +153,13 @@ class AdminController extends Controller
 
     public function new_gallery(Request $request)
     {
+        $gallery = new Gallery();
         $this->validate($request, [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'package_id' => 'required'
         ]);
         $imageName = time().'.'.$request->image->extension();  
         $request->image->move(public_path('uploads'), $imageName);
-        $gallery = new Gallery();
         $gallery->image = $imageName;
         $gallery->package_id = $request->package_id;
         $gallery->save();

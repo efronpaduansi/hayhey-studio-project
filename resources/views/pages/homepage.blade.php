@@ -91,6 +91,10 @@
                     </div>
                  </div>
             </div>
+            <div class="tombol d-flex justify-content-center">
+
+                <a href="/gallery" class="btn btn-dark rounded-pill mt-3">Show more</a>
+            </div>
         </div>
     </section>
     <!-- gallery_part part end-->

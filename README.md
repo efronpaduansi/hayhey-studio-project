@@ -4,9 +4,8 @@
 Aplikasi HayHay Studio merupakan aplikasi pendataan dan pemesan jasa photography. Aplikasi dibangun dengan Laravel framework versi 8. Berikut ini adalah fitur-fitur yang terdapat dalam aplikasi HayHey Studio :
 
 - Sistem Login untuk Administrator ataupun Staf
-- Sistem pemesan jasa photography
+- Sistem pemesanan jasa photography
 - Dashboard pendataan orders, payments link, packages, items dan gallery
-
 
 ## Installation
 
@@ -21,7 +20,7 @@ Untuk menjalankan aplikasi ini, anda harus mendownloadnya terlebih dahulu atau m
 - Jalankan aplikasi dengan mengakses ke `http://localhost:8000` 
 
 ## Butuh bantuan ?
-Silahkan kontak developer ke : `efronius@programmer.net`
+Silahkan kontak developer ke `efronius@programmer.net`
 
 ## License
 

@@ -9,11 +9,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Aksi</th>
                             <th>Nama Pemesan</th>
                             <th>Package</th>
                             <th>Nama Paket</th>
                             <th>Deskripsi Paket</th>
-                            <th>Paket Tambahan</th>
+                            <th>Couple Name</th>
                             <th>Tgl Pelaksanaan</th>
                             <th>Lokasi Pelaksanaan</th>
                             <th>Alamat</th>
@@ -27,6 +28,14 @@
                     <tbody>
                         @foreach ($orders as $order)
                             <tr>
+                                <td>
+                                    <a href="/admin/orders-print/{{ $order->id }}" target="_blank" class="btn btn-sm btn-secondary"><i class="fas fa-print"></i></a>
+                                    <form action="/admin/orders/{{ $order->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Anda yakin menghapus data ini?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
                                 <td>{{ $order->nama_pemesan }}</td>
                                 <td>{{ $order->packages->package_name }}</td>
                                 <td>{{ $order->nama_paket }}</td>
@@ -61,4 +70,11 @@
             </div>
         </div>
     </div>
+    {{-- Tampil flash message --}}
+    @if ($message = Session::get('pesan'))
+    <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>	
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
 @endsection

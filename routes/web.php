@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/terms-and-condition', [PagesController::class, 'terms_and_condition']);
+Route::get('/gallery', [PagesController::class, 'gallery']);
+Route::get('/gallery-details/{id}', [PagesController::class, 'gallery_details']);
 
 /* 
     Route for account authentication
@@ -47,7 +49,8 @@ Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('auth');
     Route::get('/orders', [AdminController::class, 'orders'])->middleware('auth');
-
+    Route::delete('/orders/{id}', [AdminController::class, 'orders_delete']);
+    Route::get('/orders-print/{id}', [AdminController::class, 'orders_print'])->middleware('auth');
 
     /*::Route for payments:: */
     Route::get('/payments', [AdminController::class, 'payments'])->middleware('auth');

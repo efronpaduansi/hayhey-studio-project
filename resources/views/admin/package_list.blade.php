@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>Aksi</th>
+                        <th>Thumbnail</th>
                         <th>Nama Package</th>
                         <th>Deskripsi</th>
                         <th>Start Harga (Rp)</th>
@@ -49,6 +50,7 @@
                             {{-- End details modal --}}
                             <a href="/admin/package-delete/{{ $item->id }}" class="badge badge-danger" onclick="return confirm('Anda yakin menghapus data ini?')">Delete</a>
                         </td>
+                        <td><img src="{{ asset('uploads/' . $item->gambar) }}" height="100px" width="120px"></td>
                         <td>{{ $item->package_name }}</td>
                         <td>{{ $item->description }}</td>
                         <td>Rp.{{ $item->starting_price }}</td>
@@ -80,7 +82,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="/admin/new-package" method="POST">
+          <form action="/admin/new-package" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="package_name">Nama Package <small class="text-danger">*</small></label>
@@ -93,6 +95,10 @@
             <div class="form-group">
               <label for="starting_price">Start Harga <small class="text-danger">*</small></label>
               <input type="number" id="starting_price" name="starting_price" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="gambar">Thumbnail <small class="text-danger">*</small></label>
+              <input type="file" id="gambar" name="gambar" class="form-control" required>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

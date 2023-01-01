@@ -7,12 +7,15 @@ use App\Models\Items;
 use App\Models\Packages;
 use App\Models\Orders;
 use App\Models\PaymentsLink;
+use App\Models\Gallery;
+
 class PagesController extends Controller
 {
     public function index()
     {
+        $judul = 'Home';
         $packages = Packages::all();
-        return view('pages.homepage', compact('packages'));
+        return view('pages.homepage', compact('packages', 'judul'));
     }
 
     public function terms_and_condition()
@@ -21,19 +24,35 @@ class PagesController extends Controller
         return view('pages.terms_and_condition', compact('judul'));
     }
 
+    public function gallery()
+    {
+        $judul = 'Gallery';
+        $packages = Packages::all();
+        $galleries = Gallery::all();
+        return view('pages.gallery', compact('judul', 'galleries', 'packages'));
+    }
+
+    public function gallery_details($id)
+    {
+        $judul = 'Gallery Details';
+        $galleries = Gallery::where('package_id', $id)->get();
+        return view('pages.gallery_details', compact('judul', 'galleries'));
+    }
     public function package_details($id)
     {
+        $judul = 'Package Details';
         // ambil data dari table packages berdasarkan slug dan data dari table items_list berdasarkan id
         $packages   = Packages::where('id', $id)->first();
         //mengambil semua data dari table items_list berdasarkan yang package_id nya sama dengan id yang diambil dari table packages
         $items      = Items::where('package_id', $packages->id)->get();
-        return view('pages.package_details', compact('packages', 'items'));
+        return view('pages.package_details', compact('judul', 'packages', 'items'));
     }
     public function package_orders($id)
     {
+        $judul = 'Package Orders';
         $items = Items::where('id', $id)->first();
         // $packages = Packages::where('slug', $slug)->first();
-        return view('pages.package_orders', compact('items'));
+        return view('pages.package_orders', compact('judul','items'));
     }
 
     public function new_orders(Request $request)

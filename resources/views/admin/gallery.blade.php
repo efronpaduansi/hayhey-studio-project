@@ -20,7 +20,6 @@
                 </thead>
                 <tbody>
                   @foreach ($gallery as $g)
-                      
                   <tr>
                     <td>
                       <form action="/admin/gallery/{{ $g->id }}" method="POST">
