@@ -67,4 +67,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('/items/{id}', [AdminController::class, 'items_delete']);
     Route::post('/items-update/{id}', [AdminController::class, 'items_update']);
 
+    /*:: Route for gallery:: */
+    Route::get('/gallery', [AdminController::class, 'gallery'])->middleware('auth');
+    Route::post('/gallery', [AdminController::class, 'new_gallery'])->middleware('auth');
+
 });

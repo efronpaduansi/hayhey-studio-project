@@ -48,6 +48,11 @@
             <i class="fas fa-th-list"></i>
             <span>Items</span></a>
     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="/admin/gallery">
+            <i class="fas fa-file-image"></i>
+            <span>Gallery</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

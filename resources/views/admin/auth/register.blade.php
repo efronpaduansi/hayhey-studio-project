@@ -54,7 +54,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-block text-light mt-3 mb-5 tombol">Login</button>
+                        <button type="submit" class="btn btn-block text-light mt-3 mb-5 tombol">Register</button>
                     </form>
                     <p class="text-center">Sudah punya akun? <a href="{{ url('/account-login') }}">Masuk!</a></p>
                 </div>

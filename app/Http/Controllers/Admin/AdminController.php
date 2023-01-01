@@ -8,6 +8,7 @@ use App\Models\Packages;
 use App\Models\Items;
 use App\Models\PaymentsLink;
 use App\Models\Orders;
+use App\Models\Gallery;
 use Illuminate\Support\Str;
 class AdminController extends Controller
 {
@@ -119,5 +120,28 @@ class AdminController extends Controller
         $items->hrg_paket  = $request->hrg_paket;
         $items->update();
         return redirect('/admin/items')->with('pesan', 'Berhasil mengubah data!');
+    }
+
+    public function gallery()
+    {
+        $judul = 'Gallery';
+        $packages   = Packages::all();
+        $gallery    = Gallery::all();
+        return view('admin.gallery', compact('judul', 'packages', 'gallery'));
+    }
+
+    public function new_gallery(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'package_id' => 'required'
+        ]);
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('uploads'), $imageName);
+        $gallery = new Gallery();
+        $gallery->image = $imageName;
+        $gallery->package_id = $request->package_id;
+        $gallery->save();
+        return redirect('/admin/gallery')->with('pesan', 'Berhasil menambahkan data!');
     }
 }
