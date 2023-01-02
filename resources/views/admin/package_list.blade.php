@@ -48,6 +48,43 @@
                                   </div>
                                 </div>
                             {{-- End details modal --}}
+                            <a href="" class="badge badge-success" data-toggle="modal"  data-target="#editModal{{ $item->id }}">Edit</a>
+                            {{-- Start edit modal --}}
+                            <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Package</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="/admin/package-update/{{ $item->id }}" method="POST">
+                                      @csrf
+                                      <div class="form-group">
+                                          <label for="package_name">Nama Package <small class="text-danger">*</small></label>
+                                          <input type="text" id="package_name" name="package_name" class="form-control" value="{{ $item->package_name }}" required>
+                                      </div>
+                                      <div class="form-group" >
+                                          <label for="description">Deskripsi <small class="text-danger">*</small></label>
+                                          <textarea name="description" id="description" cols="30" rows="4" class="form-control" required>{{ $item->description }}</textarea>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="starting_price">Start Harga <small class="text-danger">*</small></label>
+                                        <input type="number" id="starting_price" name="starting_price" class="form-control" value="{{ $item->starting_price }}" required>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {{-- End edit modal --}}
+
                             <a href="/admin/package-delete/{{ $item->id }}" class="badge badge-danger" onclick="return confirm('Anda yakin menghapus data ini?')">Delete</a>
                         </td>
                         <td><img src="{{ asset('uploads/' . $item->gambar) }}" height="100px" width="120px"></td>

@@ -62,6 +62,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/package', [AdminController::class, 'package'])->middleware('auth');
     Route::post('/new-package', [AdminController::class, 'new_package']);
     Route::get('/package-details', [AdminController::class, 'package_details']);
+    Route::post('/package-update/{id}', [AdminController::class, 'package_update']);
     Route::get('/package-delete/{id}', [AdminController::class, 'package_delete']);
 
     /*::Route for items:: */
@@ -73,5 +74,6 @@ Route::prefix('admin')->group(function () {
     /*:: Route for gallery:: */
     Route::get('/gallery', [AdminController::class, 'gallery'])->middleware('auth');
     Route::post('/gallery', [AdminController::class, 'new_gallery'])->middleware('auth');
-
+    Route::post('/gallery-update/{id}', [AdminController::class, 'gallery_update'])->middleware('auth');
+    Route::delete('/gallery/{id}', [AdminController::class, 'gallery_delete'])->middleware('auth');
 });

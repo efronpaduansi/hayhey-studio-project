@@ -22,11 +22,47 @@
                   @foreach ($gallery as $g)
                   <tr>
                     <td>
+                      <a href="" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModal{{ $g->id }}"><i class="fa fa-edit"></i></a>
+                      {{-- Start edit modal --}}
+                      <div class="modal fade" id="editModal{{ $g->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Edit Gallery</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/admin/gallery-update/{{ $g->id }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="package_id">Nama Package <small class="text-danger">*</small></label>
+                                    <select name="package_id" id="package_id" class="form-control" required>
+                                        <option value="">Pilih Package</option>
+                                        @foreach ($packages as $item)
+                                            <option value="{{ $item->id }}">{{ $item->package_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Image <small class="text-danger">*</small></label>
+                                    <input type="file" id="image" name="image" class="form-control" required>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                  <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {{-- End edit modal --}}
                       <form action="/admin/gallery/{{ $g->id }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="/admin/gallery/{{ $g->id }}/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                        <button type="submit" onclick="return confirm('Anda yakin menghapus data ini?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                       </form>
                     </td>
                     <td> 

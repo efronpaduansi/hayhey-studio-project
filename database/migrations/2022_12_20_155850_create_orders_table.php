@@ -32,7 +32,7 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
 
              //relasi ke table package
-             $table->foreign('package_id')->references('id')->on('packages');
+             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
         });
     }
 

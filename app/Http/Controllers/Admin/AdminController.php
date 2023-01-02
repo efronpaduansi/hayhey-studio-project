@@ -99,6 +99,22 @@ class AdminController extends Controller
         return redirect('/admin/package')->with('pesan', 'Berhasil menambahkan data!');
     }
 
+    public function package_update(Request $request, $id){
+
+        // cari package berdasarkan id yang dikirimkan dari halaman edit
+        $packages = Packages::find($id);
+
+        // tangkap data yang dikirimkan lalu ubah dengan yang baru
+        $packages->package_name = $request->package_name;
+        $packages->description = $request->description;
+        $packages->starting_price = $request->starting_price;
+
+        // update table packges melalui model packages
+        $packages->update();
+        // arahkan kembali ke url /admin/packge sambil membawa pesan
+        return redirect('/admin/package')->with('pesan', 'Berhasil mengubah data');
+
+    }
     public function package_delete($id)
     {
         $packages = Packages::find($id);
@@ -164,5 +180,30 @@ class AdminController extends Controller
         $gallery->package_id = $request->package_id;
         $gallery->save();
         return redirect('/admin/gallery')->with('pesan', 'Berhasil menambahkan data!');
+    }
+
+    public function gallery_update(Request $request, $id)
+    {
+        $gallery = new Gallery();
+        $gallery = Gallery::find($id);
+        
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'package_id' => 'required'
+        ]);
+
+        $gallery->package_id    = $request->package_id;
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('uploads'), $imageName);
+        $gallery->image         = $imageName;
+        $gallery->update();
+        return redirect('/admin/gallery')->with('pesan', 'Berhasil mengubah data!');
+    }
+
+    public function gallery_delete($id)
+    {
+        $gallery = Gallery::find($id);
+        $gallery->delete();
+        return redirect('/admin/gallery')->with('pesan', 'Berhasil menghapus data!');
     }
 }
