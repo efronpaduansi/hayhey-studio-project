@@ -22,8 +22,8 @@ class CreateOrdersTable extends Migration
             $table->string('package');
             $table->string('nama_paket');
             $table->string('ket_paket');
-            $table->string('paket_tambahan')->nullable();
-            $table->date('tgl_pelaksanaan');
+            $table->string('nama_pasangan');
+            $table->dateTime('tgl_pelaksanaan');
             $table->string('lokasi_pelaksanaan');
             $table->string('alamat');
             $table->string('total_harga');

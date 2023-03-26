@@ -38,7 +38,7 @@
                                       </div>
                                       <div class="modal-body">
                                         <p>Nama Package : {{ $item->package_name }}</p>
-                                        <p>Deskripsi : {{ $item->description }}</p>
+                                        <p>Deskripsi : {!!  nl2br($item->description) !!}</p>
                                         <p>Start Harga : Rp.{{ $item->starting_price }}</p>
                                       </div>
                                       <div class="modal-footer">
@@ -60,7 +60,7 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form action="/admin/package-update/{{ $item->id }}" method="POST">
+                                    <form action="/admin/package-update/{{ $item->id }}" method="POST" enctype="multipart/form-data">
                                       @csrf
                                       <div class="form-group">
                                           <label for="package_name">Nama Package <small class="text-danger">*</small></label>
@@ -74,6 +74,10 @@
                                         <label for="starting_price">Start Harga <small class="text-danger">*</small></label>
                                         <input type="number" id="starting_price" name="starting_price" class="form-control" value="{{ $item->starting_price }}" required>
                                       </div>
+                                      {{-- <div class="form-group">
+                                        <label for="gambar">Thumbnail <small class="text-danger">*</small></label>
+                                        <input type="file" id="gambar" name="gambar" class="form-control" >
+                                      </div> --}}
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                         <button type="submit" class="btn btn-primary">Update</button>
@@ -87,9 +91,9 @@
 
                             <a href="/admin/package-delete/{{ $item->id }}" class="badge badge-danger" onclick="return confirm('Anda yakin menghapus data ini?')">Delete</a>
                         </td>
-                        <td><img src="{{ asset('uploads/' . $item->gambar) }}" height="100px" width="120px"></td>
+                        <td><img src="{{ asset('uploads/' . $item->gambar) }}"  alt="" height="100px" width="120px"></td>
                         <td>{{ $item->package_name }}</td>
-                        <td>{{ $item->description }}</td>
+                        <td>{!!  nl2br($item->description) !!}</td>
                         <td>Rp.{{ $item->starting_price }}</td>
                     </tr>
                     @endforeach

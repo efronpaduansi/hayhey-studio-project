@@ -22,7 +22,7 @@
                   @foreach ($gallery as $g)
                   <tr>
                     <td>
-                      <a href="" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModal{{ $g->id }}"><i class="fa fa-edit"></i></a>
+                      <a href="" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModal{{ $g->id }}"><i class="fa fa-edit"></i></a><br><br>
                       {{-- Start edit modal --}}
                       <div class="modal fade" id="editModal{{ $g->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">

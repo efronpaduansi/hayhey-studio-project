@@ -19,17 +19,21 @@
                                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#about">about</a>
+                                    <a class="nav-link" href="{{ url('/') }}#about">About</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/terms-and-condition">Terms & Condition</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/gallery">Gallery</a>
+                                    <a class="nav-link" href="{{ url('/') }}#gallery">Gallery</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/') }}#services">Services</a>
+                                </li>
+
                                 @auth
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('/admin/dashboard') }}"> <i class="bi bi-house-door-fill"></i> Home</a>
+                                        <a class="nav-link" href="{{ url('/admin/dashboard') }}"> <i class="bi bi-house-door-fill"></i>{{ Auth()->user()->name }} </a>
                                     </li>
                                     @else
                                     <li class="nav-item">

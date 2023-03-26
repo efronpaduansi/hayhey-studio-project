@@ -104,10 +104,19 @@ class AdminController extends Controller
         // cari package berdasarkan id yang dikirimkan dari halaman edit
         $packages = Packages::find($id);
 
+
         // tangkap data yang dikirimkan lalu ubah dengan yang baru
         $packages->package_name = $request->package_name;
         $packages->description = $request->description;
         $packages->starting_price = $request->starting_price;
+
+    //     // Upload Gambar
+    //     $this->validate($request, [
+    //         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
+    //    $imageName = time().'.'.$request->gambar->extension();  
+    //    $request->gambar->move(public_path('uploads'), $imageName);
+    //    $packages->gambar = $imageName;
 
         // update table packges melalui model packages
         $packages->update();

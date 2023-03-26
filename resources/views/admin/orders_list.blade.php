@@ -23,13 +23,14 @@
                             <th>Pembayaran</th>
                             <th>Total Harga (Rp)</th>
                             <th>Ket.</th>
+                            <th>Tambahan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($orders as $order)
                             <tr>
                                 <td>
-                                    <a href="/admin/orders-print/{{ $order->id }}" target="_blank" class="btn btn-sm btn-secondary"><i class="fas fa-print"></i></a>
+                                    <a href="/admin/orders-print/{{ $order->id }}" target="_blank" class="btn btn-sm btn-secondary"><i class="fas fa-print"></i></a><br><br>
                                     <form action="/admin/orders/{{ $order->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -41,14 +42,14 @@
                                 <td>{{ $order->nama_paket }}</td>
                                 <td>{{ $order->ket_paket }}</td>
                                 <td class="text-center">
-                                    @if ($order->paket_tambahan == 0)
+                                    @if ($order->nama_pasangan == 0)
                                         -
                                     @else
-                                        {{ $order->paket_tambahan }}
+                                        {{ $order->nama_pasangan }}
                                     @endif
                                 </td>
                                 <td>
-                                    {{ date('d/m/Y', strtotime($order->tgl_pelaksanaan)) }}
+                                    {{ $order->tgl_pelaksanaan }}
                                 </td>
                                 <td>{{ $order->lokasi_pelaksanaan }}</td>
                                 <td>{{ $order->alamat }}</td>
@@ -61,6 +62,13 @@
                                         <div class="badge badge-success">Lunas</div>
                                     @else
                                         <div class="badge badge-warning">Belum Lunas</div>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if ( $order->keterangan == 0)
+                                    -
+                                    @else
+                                        {{ $order->keterangan }}
                                     @endif
                                 </td>
                             </tr>

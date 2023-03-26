@@ -38,7 +38,7 @@
                     <td>{{ $orders->packages->package_name }}</td>
                     <td>{{ $orders->nama_paket }}</td>
                     <td> {!! nl2br( $orders->ket_paket ) !!}</td>
-                    <td>{{ $orders->paket_tambahan }}</td>
+                    <td>{{ $orders->nama_pasangan }}</td>
                     <td>{{ $orders->lokasi_pelaksanaan }}</td>
                     <td>{{ $orders->alamat }}</td>
                     <td>{{ $orders->no_hp_pemesan }}</td>

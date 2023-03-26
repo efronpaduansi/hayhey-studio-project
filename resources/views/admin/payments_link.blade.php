@@ -15,7 +15,7 @@
                         <tr>
                             <th>Aksi</th>
                             <th>Nama Bank</th>
-                            <th>No Rekening</th>
+                            <th>No Rekening / No Transfer</th>
                             <th>Pemilik Rekening</th>
                         </tr>
                     </thead>
@@ -103,7 +103,7 @@
                 <input type="text" id="nama_bank" name="nama_bank" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="no_rek">No Rekening<small class="text-danger">*</small></label>
+                <label for="no_rek">No Rekening / No Transfer<small class="text-danger">*</small></label>
                 <input type="number" id="no_rek" name="no_rek" class="form-control" required>
             </div>
             <div class="form-group">

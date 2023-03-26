@@ -41,7 +41,10 @@ Route::post('/account-logout', [AuthController::class, 'account_logout']);
 Route::get('/package-details/{id}', [PagesController::class, 'package_details']);
 Route::get('/package-orders/{id}', [PagesController::class, 'package_orders']);
 Route::post('/new-orders', [PagesController::class, 'new_orders']);
-Route::get('/pembayaran', [PagesController::class, 'pembayaran']);
+Route::get('/invoice-download/{id}', [PagesController::class, 'invoice_download']);
+// Route::get('/invoice', [PagesController::class, 'invoice']);
+Route::get('/pembayaran/{id}', [PagesController::class, 'pembayaran']);
+Route::get('/confirmation/{id}', [PagesController::class, 'confirmation']);
 
 /* 
     Route for admin zone

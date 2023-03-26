@@ -24,6 +24,31 @@
                     @foreach ($items as $item)
                     <tr>
                         <td>
+                          <a href="#" class="badge badge-secondary" data-toggle="modal" data-target="#detailsModal{{ $item->id }}">Details</a>
+                          {{-- Start details modal --}}
+                            <!-- Modal -->
+                              <div class="modal fade" id="detailsModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Item Details</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>Nama Package : {{ $item->packages->package_name }}</p>
+                                        <p>Nama Paket : {{ $item->nama_paket }}</p>
+                                        <p>Deskripsi : {!! nl2br($item->ket_paket)  !!}</p>
+                                        <p>Harga : Rp.{{ $item->hrg_paket }}</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                          {{-- End details modal --}}
                             <a href="#" class="badge badge-success" data-toggle="modal" data-target="#editModal{{ $item->id }}">Edit</a>
                             {{-- Start edit modal --}}
                               <!-- Modal -->
@@ -72,7 +97,7 @@
                         </td>
                         <td>{{ $item->packages->package_name}}</td>
                         <td>{{ $item->nama_paket }}</td>
-                        <td>{{ $item->ket_paket }}</td>
+                        <td>{!! nl2br($item->ket_paket)  !!}</td>
                         <td>Rp.{{ $item->hrg_paket }}</td>
                     </tr>
                     @endforeach

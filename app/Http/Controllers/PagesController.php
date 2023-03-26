@@ -57,7 +57,7 @@ class PagesController extends Controller
 
     public function new_orders(Request $request)
     {
-        $orders = new Orders();
+        $orders                         = new Orders();
         $orders->package_id             = $request->package_id;
         $orders->nama_pemesan           = $request->nama_pemesan;
         $orders->email_pemesan          = $request->email_pemesan;
@@ -65,7 +65,7 @@ class PagesController extends Controller
         $orders->package               = $request->package;
         $orders->nama_paket             = $request->nama_paket;
         $orders->ket_paket             = $request->ket_paket;
-        $orders->paket_tambahan         = $request->paket_tambahan;
+        $orders->nama_pasangan         = $request->nama_pasangan;
         $orders->tgl_pelaksanaan        = $request->tgl_pelaksanaan;
         $orders->lokasi_pelaksanaan     = $request->lokasi_pelaksanaan;
         $orders->alamat                 = $request->alamat;
@@ -73,13 +73,43 @@ class PagesController extends Controller
         $orders->pembayaran             = $request->pembayaran;
         $orders->keterangan             = $request->keterangan;
         $orders->save();
-        return redirect('/pembayaran')->with('pesan', 'Terima kasih telah memesan paket kami! Silahkan lakukan pembayaran sebelum 24 jam dari sekarang.');
+        return view('pages.new_orders', compact('orders'));
+        //return redirect('/pembayaran')->with('pesan', 'Terima kasih telah memesan paket kami! Silahkan lakukan pembayaran sebelum 24 jam dari sekarang.');
     }
 
-    public function pembayaran()
+    public function invoice_download($id)
     {
-        $judul = 'Pembayaran';
-        $payments_link = PaymentsLink::all();
-        return view('pages.pembayaran', compact('judul', 'payments_link'));
+        $orders = Orders::where('id', $id)->first();
+        return view('pages.invoice_pdf', compact('orders'));
     }
+
+    // public function invoice()
+    // {
+    //     $judul = 'Invoice';
+    //     $orders = Orders::all();
+    //    // return view('pages.invoice', compact('judul','orders'));
+    //     return redirect('/pembayaran')->with('pesan', 'Terima kasih telah memesan paket kami! Silahkan lakukan pembayaran sebelum 24 jam dari sekarang.');
+    // }
+
+    public function pembayaran($id)
+    {
+        $judul          = 'Pembayaran';
+        $order          = Orders::where('id', $id)->first();
+        $total_bayar   = $order->total_harga;
+        $payments_link  = PaymentsLink::all();
+        $message        = 'Terima kasih telah memesan paket kami! Lakukan pembayaran sebesar Rp.' .$total_bayar . ' ' .  'agar booking pesanan Anda dapat segera diproses ';
+        return view('pages.pembayaran', compact('judul', 'payments_link', 'message', 'order'));
+        
+    }
+
+    public function confirmation($id)
+    {
+        $order = Orders::where('id', $id)->first();
+        $judul = 'Confirmation';
+        $message = 'Lakukan Konfirmasi pembayaran agar booking pesanan dapat diproses'; 
+        return view('pages.confirmation', compact('judul', 'message', 'order'));
+    }
+
+    
 }
+

@@ -11,7 +11,7 @@
                             <h5>Welcome</h5>
                             <h1>Hay<span>Dey</span> Moment</h1>
                             <p style="color: #000">Create your favorite moment with us</p>
-                            <a href="#" class="btn_1" style="color: #000">view work</a>
+                            <a href="#services" class="btn_1" style="color: #000">Booking Now</a>
                         </div>
                     </div>
                 </div>
@@ -28,11 +28,13 @@
                     <div class="about_us_text text-center">
                         <h5>About Us</h5>
                         <h2>HayDey Moment</h2>
-                        <p>HayDey Moment berdiri sejak 2019 yang mana pada awalnya mengerjakan buku tahunan sekolah dan wedding foto. Namun sejak tahun 2021 HayDey Moment memfokuskan diri pada jasa wedding dan prawedding.
-                        “Crate Your Favorite Moment With Us”  menjadi visi yang HayDey Moment usung untuk membantu mengabadikan memori yang berharga bagi pelanggan yang menggunakan jasanya.
-                        HayDey Moment berdomisili pada daerah kabupaten tangerang tepatnya beralamat di daerah Pasar Kemis, Jl. Pasar kemis-Cikupa, Suka Asih Rt.01/03 Kecamatan Pasar Kemis.</p>
-                        <a href="/about" class="btn_2">read more</a>
+                        <p> Berawal di tahun 2014, kemudian kami sudah 2 kali berganti nama dan akhirnya terbentuklah <i>HayDey</i>.<br><br>
+                            <i>" Create Your Moment With Us" </i><br> Motto kami yang terbantuk karena kepuasan customer dengan hasil foto dan service kami yang merupakan aset terpenting.
+                             Karna memiliki jiwa seni yg tinggi, kami selalu berusaha untuk selalu kreatif dan berinovasi, agar bisa menciptakan moment terbaik.
+                         <br><br> HayDey Moment berdomisili pada daerah Kabupaten Tangerang Pasar Kemis <br> Jl. Pasar kemis-Cikupa, Suka Asih Rt.01/03 Kecamatan Pasar Kemis.</br></p>
+                         {{-- <a href="https://www.instagram.com/haydey_moment/" class="btn btn-dark rounded-pill mt-3">View Work</a> --}}
                     </div>
+
                 </div>
             </div>
         </div>
@@ -91,22 +93,22 @@
                     </div>
                  </div>
             </div>
-            <div class="tombol d-flex justify-content-center">
+            <div class="section_tittle text-center" data-aos="zoom-in" data-aos-duration="1000">
 
-                <a href="/gallery" class="btn btn-dark rounded-pill mt-3">Show more</a>
+                <a href="/gallery" class="btn_2 mt-3">Show more</a>
             </div>
         </div>
     </section>
     <!-- gallery_part part end-->
 
     <!--::pricing part start::-->
-    <section class="pricing_part section_padding home_page_pricing">
+    <section class="pricing_part section_padding home_page_pricing" id="services">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6">
-                    <div class="section_tittle">
-                        <p>Price table</p>
-                        <h2>pricing plan</h2>
+                    <div class="section_tittle text-center">
+                        <p>Start Price Packagae</p>
+                        <h2>Services</h2>
                     </div>
                 </div>
             </div>
@@ -121,7 +123,7 @@
                         <div class="pricing_content">
                             <p>Start from</p>
                             <h3>IDR {{ $p->starting_price }}</h3>
-                            <p>{{ $p->description }}</p>
+                            <p>{!! nl2br($p->description)  !!}</p>
                             <a href="/package-details/{{ $p->id }}" class="btn_2">Details</a>
                         </div>
                     </div>

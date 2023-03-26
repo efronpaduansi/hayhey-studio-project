@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ $judul }}</title>
+    <title>HayDey Studio</title>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('pages/css/bootstrap.min.css') }}">
@@ -78,6 +78,9 @@
     <script>
       AOS.init();
     </script>
+    <!--Live Chat -->
+    {{-- <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="2ba99d83-8cea-4676-ae3c-7c018cd60199";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script> --}}
+
 </body>
 
 </html>

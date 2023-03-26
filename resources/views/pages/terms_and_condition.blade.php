@@ -5,7 +5,7 @@
     <h1 class="my-5">Terms and Condition</h1>
     <div class="card my-5">
         <div class="card-body">
-            1. Booking di lakukan H-1  <br>
+            1. Booking di lakukan H-1 Bulan  <br>
             2. Cancel = DP hangus  <br>
             3. DP minimal 25% dari masing-masing package  <br>
             4. Pelunasan di bayar paling lambat H+3 setelah acara jika terlambat membayar akan di kenakan extra charge  sebesar 25% dari harga masing-masing package  <br>

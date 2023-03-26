@@ -14,8 +14,8 @@
                     <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" autofocus required>
                 </div>
                 <div class="form-group">
-                    <label for="paket_tambahan">Couple Name <small class="text-danger">*</small></label>
-                    <input type="text" class="form-control" id="paket_tambahan" name="paket_tambahan" required>
+                    <label for="nama_pasangan">Couple Name <small class="text-danger">*</small></label>
+                    <input type="text" class="form-control" id="nama_pasangan" name="nama_pasangan" placeholder="Contoh: Aldi dan Rima" required>
                 </div>
                 <div class="form-group">
                     <label for="package">Package</label>
@@ -31,7 +31,8 @@
                 </div>
                 <div class="form-group">
                     <label for="tgl_pelaksanaan">Tanggal Pelaksanaan <small class="text-danger">*</small></label>
-                    <input type="date" class="form-control" id="tgl_pelaksanaan" name="tgl_pelaksanaan" required>
+                    <input type="datetime-local" class="form-control" id="tgl_pelaksanaan" name="tgl_pelaksanaan" required>
+                    <p style="font-size: 12px"><i>Tentukan tanggal dan jam pelaksanaan</i></p>
                 </div>
                 <div class="form-group">
                     <label for="lokasi_pelaksanaan">Lokasi Pelaksanaan <small class="text-danger">*</small></label>
@@ -51,6 +52,7 @@
                 </div>
                <div class="form-group">
                 <label for="pembayaran">Pembayaran <small class="text-danger">*</small></label>
+                <p style="font-size: 12px"><i>Disarankan untuk melakukan pembayaran secara DP</i></p>
                 <select class="form-control" id="pembayaran" name="pembayaran" required onclick="tampilkan()">
                     <option value="Cash">Cash</option>
                     <option value="DP">DP</option>
@@ -65,7 +67,7 @@
                     <label for="keterangan">Keterangan lain</label>
                     <input class="form-control" type="text" name="keterangan" id="keterangan">
                 </div>
-                <button type="submit" class="btn btn-primary">Bayar</button>
+                <button type="submit" class="btn btn-primary">Booking</button>
             </form>
             <div class="alert alert-success my-3" role="alert" id="alert_hrg">
                 {{-- tampilkan total --}}
@@ -84,16 +86,16 @@
     var total_harga = document.getElementById('total_harga');
     var ket_hrg     = document.getElementById('ket_hrg');
     var alert_hrg   = document.getElementById('alert_hrg');
-    //jika pembayaran di pilih dp maka total harga akan dikalikan dengan 45%
+    //jika pembayaran di pilih dp maka total harga akan dikalikan dengan 25%
     pembayaran.addEventListener('change', function(){
         if(pembayaran.value == 'DP'){
-            total_harga.value = {{ $items->hrg_paket }} * 0.45;
-            ket_hrg.innerHTML = 'DP sebesar 45% dari total harga';
-            alert_hrg.innerHTML = 'Klik <strong>Bayar</strong> untuk melakukan pembayaran sebesar <strong>Rp.'+total_harga.value+'</strong>';
+            total_harga.value = {{ $items->hrg_paket }} * 0.25;
+            ket_hrg.innerHTML = 'DP sebesar 25% dari total harga';
+            alert_hrg.innerHTML = 'Klik <strong>Booking</strong> dan lakukan pembayaran sebesar <strong>Rp.'+total_harga.value+'</strong>';
         }else{
             total_harga.value = {{ $items->hrg_paket }};
-            ket_hrg.innerHTML = 'Pembayaran dilakukan saat acara berlangsung';
-            alert_hrg.innerHTML = 'Klik <strong>Bayar</strong> untuk melakukan pembayaran sebesar <strong>Rp.'+total_harga.value+'</strong>';
+            ket_hrg.innerHTML = 'Pembayaran full harga';
+            alert_hrg.innerHTML = 'Klik <strong>Booking</strong> dan lakukan pembayaran sebesar <strong>Rp.'+total_harga.value+'</strong>';
         }
     });
    }

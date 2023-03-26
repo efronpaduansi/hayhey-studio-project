@@ -61,7 +61,7 @@
                     </form>
                     <p class="text-center">Belum punya akun? <a href="{{ url('/account-register') }}">Daftar!</a></p>
                 </div>
-                <a href="/" class="text-center mb-2">Back to home</a>
+                <a href="/" class="text-center mb-2">Back to website</a>
             </div>
         </div>
     </div>

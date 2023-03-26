@@ -4,7 +4,8 @@
 <div class="container">
     <h1>Pembayaran</h1>
     {{-- Tampil flash message --}}
-    @if ($message = Session::get('pesan'))
+    @if ($message)
+    {{-- @if ($message = Session::get('pesan')) --}}
     <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>	
         <strong>{{ $message }}</strong>
@@ -24,9 +25,9 @@
         @endforeach
     </div>
     <div class="row d-flex justify-content-center my-5">
-        <a href="{{ url('/') }}" class="btn btn-secondary mr-4">Kembali</a>
+        <a href="{{ url('/confirmation', $order->id) }}" class="btn btn-secondary mr-4">Konfirmasi</a>
         <?php $pemesan = Session::get('nama'); ?>
-        <a href="https://api.whatsapp.com/send?phone=+62 896-0273-7874&text=Halo%20Admin%20mohon%20untuk%20mengkonfirmasi%20pesanan%20saya." target="_blank" class="btn btn-success">Konfirmasi pembayaran via WhatsApp</a>
+        <a href="https://api.whatsapp.com/send?phone=+62 877-7501-8085&text=Halo%20Admin%20saya%20telah%20melakukan%20booking,%20mohon%20untuk%20mengkonfirmasi%20pesanan%20saya." target="_blank" class="btn btn-success">Konfirmasi pembayaran via WhatsApp</a>
     </div>
 </div>
 
